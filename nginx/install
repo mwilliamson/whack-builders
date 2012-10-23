@@ -2,4 +2,6 @@
 
 set -e
 
+NGINX_DIR=`ls nginx-*.tar.gz | sed 's/^\(nginx-.*\)\.tar\.gz$/\1/g'`
+cd ${NGINX_DIR}
 make install
