@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+
+INSTALL_DIR=$1
+
+NODEJS_DIR=`ls node-v*.tar.gz | sed 's/^\(node-v.*\)\.tar\.gz$/\1/g'`
+
+tar xzf node-v*.tar.gz
+
+cd ${NODEJS_DIR}
+./configure --prefix=${INSTALL_DIR}
+make
