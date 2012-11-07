@@ -2,7 +2,7 @@
 
 set -e
 
-INSTALL_DIR=$1
+BUILD_DIR=`pwd`/build-dir
 
 NGINX_DIR=`ls nginx-*.tar.gz | sed 's/^\(nginx-.*\)\.tar\.gz$/\1/g'`
 PCRE_DIR=`ls pcre-*.tar.gz | sed 's/^\(pcre-.*\)\.tar\.gz$/\1/g'`
@@ -13,5 +13,6 @@ tar xzf nginx-*.tar.gz
 tar xzf zlib-*.tar.gz
 
 cd ${NGINX_DIR}
-./configure --prefix=${INSTALL_DIR} --with-pcre=../${PCRE_DIR} --with-zlib=../${ZLIB_DIR} --with-ipv6
+./configure --prefix=${BUILD_DIR} --with-pcre=../${PCRE_DIR} --with-zlib=../${ZLIB_DIR} --with-ipv6
 make
+make install
